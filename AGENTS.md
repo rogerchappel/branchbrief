@@ -178,6 +178,26 @@ Rules:
 - Treat major updates as medium or high risk.
 - Treat auth, payment, crypto, database, build, and deployment dependency updates as high risk.
 
+## Release Cycle Tasks
+
+Agents may perform release-cycle maintenance as atomic commits.
+
+Allowed release-cycle commits:
+
+- `docs(changelog): add unreleased section`
+- `chore(version): start next development cycle`
+- `docs(roadmap): update next milestone`
+- `docs(release): update release process`
+- `ci(release): add release smoke check`
+
+Rules:
+
+- Do not create release-cycle commits unless there is a real release or milestone transition.
+- Do not bump versions randomly.
+- Do not tag or publish releases without explicit approval.
+- Do not modify npm publishing settings without approval.
+- Keep changelog, roadmap, and version changes separate when they represent separate intents.
+
 ## Stop Before Touching
 
 Ask before changing:
