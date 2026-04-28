@@ -51,4 +51,3 @@ V3 expands branchbrief into a richer review and policy layer for teams.
   represent separate review intents.
 - Do not mark roadmap items as shipped until implementation, docs, and
   verification have landed.
-

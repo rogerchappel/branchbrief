@@ -63,4 +63,3 @@ maintainer-only action.
 - [ ] Next `Unreleased` changelog section added only when the next development
   cycle begins.
 - [ ] Known follow-up work is captured as issues or roadmap updates.
-

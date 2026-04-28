@@ -130,4 +130,3 @@ Agents must not without explicit approval:
 - Change GitHub Action release permissions.
 - Modify secrets, tokens, or environment variables.
 - Rewrite shared history.
-

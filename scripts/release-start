@@ -19,4 +19,3 @@ echo "- Run npm run release:check."
 echo "- Use docs/release-checklist.md for maintainer sign-off."
 echo ""
 echo "Do not publish, tag, or push without explicit maintainer approval."
-

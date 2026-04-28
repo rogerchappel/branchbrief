@@ -14,4 +14,3 @@ git diff --check
 npm run pack:dry-run
 
 echo "Release checks completed. Publishing, tagging, and pushing still require explicit maintainer approval."
-
