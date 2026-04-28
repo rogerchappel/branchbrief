@@ -55,6 +55,19 @@ For GitHub Actions, use `actions/checkout` with `fetch-depth: 0` so the base bra
 
 ## Install
 
+From npm, after the package is published:
+
+```bash
+npm install -g branchbrief
+branchbrief --help
+```
+
+Or run without a global install:
+
+```bash
+npx branchbrief --help
+```
+
 From this repository:
 
 ```bash
@@ -73,12 +86,6 @@ For local command development, link the package after building:
 ```bash
 npm link
 branchbrief --help
-```
-
-After the package is published to npm, expected usage is:
-
-```bash
-npx branchbrief --help
 ```
 
 `npx` resolves packages from npm. It does not deploy the package itself.
@@ -355,6 +362,7 @@ While the project is pre-1.0:
 - reserve `1.0.0` for stable CLI flags, default behavior, and output formats
 
 See [docs/release.md](docs/release.md) for the maintainer release flow.
+See [docs/npm-publishing.md](docs/npm-publishing.md) for npm package verification and Trusted Publishing setup.
 
 ## License
 

@@ -1,11 +1,11 @@
 {
   "name": "branchbrief",
   "version": "0.1.0",
-  "description": "Local-first CLI for generating reviewable branch briefs.",
+  "description": "Local-first branch review briefs for humans and AI reviewers.",
   "homepage": "https://branchbrief.rogerchappel.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rogerchappel/branchbrief.git"
+    "url": "https://github.com/rogerchappel/branchbrief.git"
   },
   "bugs": {
     "url": "https://github.com/rogerchappel/branchbrief/issues"
@@ -13,20 +13,22 @@
   "keywords": [
     "git",
     "cli",
-    "code-review",
-    "pull-request",
     "github-actions",
-    "ai-review"
+    "copilot",
+    "ai-agents",
+    "code-review",
+    "pull-request"
   ],
   "bin": {
-    "branchbrief": "dist/cli.js"
+    "branchbrief": "./dist/cli.js"
   },
   "exports": {
     ".": "./dist/index.js"
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "clean": "rm -rf dist",
