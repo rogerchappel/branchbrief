@@ -41,6 +41,9 @@ See:
 - [GitHub Actions guide](docs/github-actions.md)
 - [Dependency policy](docs/dependency-policy.md)
 - [Release guide](docs/release.md)
+- [Release process](docs/release-process.md)
+- [Release checklist](docs/release-checklist.md)
+- [Roadmap](ROADMAP.md)
 
 ## Requirements
 
@@ -219,6 +222,16 @@ Run tests:
 ```bash
 npm test
 ```
+
+Run release checks:
+
+```bash
+npm run release:check
+```
+
+Release maintenance docs live in [docs/release-process.md](docs/release-process.md)
+and [docs/release-checklist.md](docs/release-checklist.md). These checks do not
+publish, tag, or push releases.
 
 Run the TypeScript typecheck:
 
