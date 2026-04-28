@@ -5,9 +5,9 @@
     "remote": "git@github.com:rogerchappel/branchbrief.git"
   },
   "branch": {
-    "current": "agent/output-renderers",
-    "base": "main",
-    "mergeBase": "abc123"
+    "current": "agent/self-dogfood",
+    "base": "origin/main",
+    "mergeBase": "49317f2f9b573a2fd586def9dfb702f96f5f7a76"
   },
   "status": {
     "dirty": false,
@@ -17,50 +17,80 @@
   },
   "commits": [
     {
-      "sha": "abc123",
-      "subject": "feat(output): generate markdown branch briefs"
+      "sha": "0e651faf7c02746771f2482acf213ca8bf1dd18f",
+      "subject": "fix(branchbrief): use fetched base ref in workflow"
     },
     {
-      "sha": "def456",
-      "subject": "feat(output): support json branch briefs"
+      "sha": "479cce1ef32784ea64bf38af2d78a80dfd0280cc",
+      "subject": "docs(examples): add generated branch brief examples"
+    },
+    {
+      "sha": "a0906d1fe1c3674e8ea30997cbbec5dcd3a2ef73",
+      "subject": "docs(github): document self-dogfood workflow"
+    },
+    {
+      "sha": "fda27b5bf14a60551435388a8ebd2d61fff6cdd2",
+      "subject": "ci(branchbrief): run branchbrief on pull requests"
     }
   ],
   "filesChanged": [
-    "src/output/markdown.ts",
-    "src/output/json.ts",
-    "tests/output/markdown.test.ts"
+    ".github/workflows/branchbrief.yml",
+    "README.md",
+    "docs/github-actions.md",
+    "examples/BRANCH_BRIEF.example.md",
+    "examples/branch-brief.example.json"
   ],
   "diffStat": {
-    "files": 3,
-    "insertions": 180,
-    "deletions": 0,
-    "raw": "3 files changed, 180 insertions(+)"
+    "files": 5,
+    "insertions": 128,
+    "deletions": 45,
+    "raw": "5 files changed, 128 insertions(+), 45 deletions(-)"
   },
   "risk": {
-    "level": "low",
+    "level": "medium",
     "notes": [
-      "Output-only changes",
-      "No git or filesystem access"
+      "Medium-risk path changed: .github/workflows/branchbrief.yml",
+      "CI workflow changed",
+      "documentation changed",
+      "example files changed"
     ],
     "signals": [
       {
+        "id": "path.medium",
+        "level": "medium",
+        "path": ".github/workflows/branchbrief.yml",
+        "reason": "Medium-risk path signal \".github/workflows\" matched"
+      },
+      {
+        "id": "category.ci",
         "level": "low",
-        "path": "src/output/markdown.ts",
-        "reason": "pure renderer changed"
+        "reason": "CI workflow changed"
+      },
+      {
+        "id": "category.docs",
+        "level": "low",
+        "reason": "documentation changed"
+      },
+      {
+        "id": "category.examples",
+        "level": "low",
+        "reason": "example files changed"
       }
     ]
   },
   "verification": {
     "provided": false,
     "suggestedCommands": [
-      "node --test tests/output/*.test.ts",
-      "git diff --check"
-    ]
+      "npm test",
+      "npm run typecheck",
+      "npm run build"
+    ],
+    "notes": []
   },
   "generatedAt": "2026-04-28T00:00:00.000Z",
   "copilotReviewContext": {
     "focus": [
-      "Risk level: low",
+      "Risk level: medium",
       "Sensitive files changed",
       "Public API changes",
       "Config or CI changes",
@@ -69,12 +99,16 @@
       "Rollback concerns"
     ],
     "riskSignals": [
-      "low - src/output/markdown.ts: pure renderer changed"
+      "medium - .github/workflows/branchbrief.yml: Medium-risk path signal \".github/workflows\" matched",
+      "low - CI workflow changed",
+      "low - documentation changed",
+      "low - example files changed"
     ],
     "verificationGaps": [
       "Verification was not provided.",
-      "Suggested command: node --test tests/output/*.test.ts",
-      "Suggested command: git diff --check"
+      "Suggested command: npm test",
+      "Suggested command: npm run typecheck",
+      "Suggested command: npm run build"
     ],
     "rollbackConcerns": [
       "Confirm the listed commits can be reverted cleanly if issues are found."

@@ -3,38 +3,44 @@
 ## Overview
 
 Repo: branchbrief
-Branch: agent/output-renderers
-Base: main
+Branch: agent/self-dogfood
+Base: origin/main
 Generated: 2026-04-28T00:00:00.000Z
 Status: clean, staged 0, unstaged 0, untracked 0
 
 ## Summary
 
-This branch contains 2 commits affecting 3 files.
+This branch contains 4 commits affecting 5 files.
 
 ## Commits
 
-- abc123 feat(output): generate markdown branch briefs
-- def456 feat(output): support json branch briefs
+- 0e651faf7c02746771f2482acf213ca8bf1dd18f fix(branchbrief): use fetched base ref in workflow
+- 479cce1ef32784ea64bf38af2d78a80dfd0280cc docs(examples): add generated branch brief examples
+- a0906d1fe1c3674e8ea30997cbbec5dcd3a2ef73 docs(github): document self-dogfood workflow
+- fda27b5bf14a60551435388a8ebd2d61fff6cdd2 ci(branchbrief): run branchbrief on pull requests
 
 ## Files Changed
 
-- src/output/markdown.ts
-- src/output/json.ts
-- tests/output/markdown.test.ts
+- .github/workflows/branchbrief.yml
+- README.md
+- docs/github-actions.md
+- examples/BRANCH_BRIEF.example.md
+- examples/branch-brief.example.json
 
 ## Diff Stat
 
-3 files changed, 180 insertions(+)
+5 files changed, 128 insertions(+), 45 deletions(-)
 
 ## Risk Level
 
-low
+medium
 
 ## Risk Notes
 
-- Output-only changes
-- No git or filesystem access
+- Medium-risk path changed: .github/workflows/branchbrief.yml
+- CI workflow changed
+- documentation changed
+- example files changed
 
 ## Verification
 
@@ -42,8 +48,9 @@ Not provided.
 
 Suggested commands:
 
-- node --test tests/output/*.test.ts
-- git diff --check
+- npm test
+- npm run typecheck
+- npm run build
 
 ## Rollback Plan
 
@@ -57,7 +64,7 @@ Review the changed files, risk notes, and verification status before merge.
 
 Review this branch with attention to:
 
-- Risk level: low
+- Risk level: medium
 - Sensitive files changed
 - Public API changes
 - Config or CI changes
@@ -67,13 +74,17 @@ Review this branch with attention to:
 
 Risk signals:
 
-- low - src/output/markdown.ts: pure renderer changed
+- medium - .github/workflows/branchbrief.yml: Medium-risk path signal ".github/workflows" matched
+- low - CI workflow changed
+- low - documentation changed
+- low - example files changed
 
 Verification gaps:
 
 - Verification was not provided.
-- Suggested command: node --test tests/output/*.test.ts
-- Suggested command: git diff --check
+- Suggested command: npm test
+- Suggested command: npm run typecheck
+- Suggested command: npm run build
 
 Rollback concerns:
 

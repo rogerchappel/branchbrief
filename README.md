@@ -155,6 +155,8 @@ branchbrief --repo-root . --base origin/main --no-color
 
 `branchbrief` can run in GitHub Actions as a read-only workflow. This example writes the brief to the job summary and uploads the exact Markdown artifact.
 
+This repository dogfoods `branchbrief` on its own pull requests with `.github/workflows/branchbrief.yml`. The workflow builds the local checkout, runs `node dist/cli.js`, appends `BRANCH_BRIEF.md` to the job summary, and uploads the same file as an artifact without posting PR comments.
+
 ```yaml
 name: Branch Brief
 
@@ -178,10 +180,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build local CLI
+        run: npm run build
 
       - name: Generate branch brief
         run: |
-          npx branchbrief --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
+          node dist/cli.js --base "origin/${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
 
       - name: Add branch brief to job summary
         run: |
