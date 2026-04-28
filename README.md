@@ -6,6 +6,8 @@ Turn any branch into a reviewable, auditable brief for humans and AI reviewers.
 
 The product requirements document is available at [docs/PRD.md](docs/PRD.md).
 
+The documentation site source lives in [src/content/docs](src/content/docs) and builds with `npm run build:docs`.
+
 ## CLI
 
 The package exposes a `branchbrief` command:

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">branchbrief icon</title>
+  <desc id="desc">A git branch connecting to a review brief.</desc>
+  <rect width="256" height="256" rx="56" fill="#12201b"/>
+  <path d="M76 64v60c0 37 30 67 67 67h37" fill="none" stroke="#58d68d" stroke-width="18" stroke-linecap="round"/>
+  <path d="M76 124h44c32 0 58-26 58-58v-2" fill="none" stroke="#6ee7f9" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="76" cy="64" r="24" fill="#f8fafc"/>
+  <circle cx="180" cy="64" r="24" fill="#f8fafc"/>
+  <circle cx="180" cy="191" r="24" fill="#f8fafc"/>
+  <path d="M111 95h67a18 18 0 0 1 18 18v50a18 18 0 0 1-18 18h-67a18 18 0 0 1-18-18v-50a18 18 0 0 1 18-18Z" fill="#facc15"/>
+  <path d="M113 125h61M113 148h44" stroke="#12201b" stroke-width="10" stroke-linecap="round"/>
+</svg>
