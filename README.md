@@ -6,3 +6,4 @@ Turn any branch into a reviewable, auditable brief for humans and AI reviewers.
 
 The product requirements document is available at [docs/PRD.md](docs/PRD.md).
 
+GitHub Actions usage is documented at [docs/github-actions.md](docs/github-actions.md).
