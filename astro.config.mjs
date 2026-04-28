@@ -15,6 +15,9 @@ export default defineConfig({
       social: {
         github: 'https://github.com/rogerchappel/branchbrief',
       },
+      components: {
+        Footer: './src/components/Footer.astro',
+      },
       sidebar: [
         {
           label: 'Getting Started',
