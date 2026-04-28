@@ -22,6 +22,8 @@ execFileSync(
     "--moduleResolution",
     "NodeNext",
     "--strict",
+    "--types",
+    "node",
     "--rewriteRelativeImportExtensions",
     "--outDir",
     outDir,
