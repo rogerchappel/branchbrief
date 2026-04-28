@@ -102,6 +102,20 @@ Use Conventional Commits.
 
 One commit equals one reviewable intent.
 
+File count is not the commit boundary.
+
+Split commits when the work introduces independently reviewable parts, such as:
+
+- public contracts or types
+- implementation
+- tests
+- examples or fixtures
+- documentation
+- generated artifacts
+- CI/config changes
+
+Keep them together only when splitting would create artificial commits that cannot be understood or verified independently.
+
 Allowed commit types:
 
 - `feat:` user-visible capability
