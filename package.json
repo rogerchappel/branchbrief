@@ -2,8 +2,24 @@
   "name": "branchbrief",
   "version": "0.1.0",
   "description": "Local-first CLI for generating reviewable branch briefs.",
+  "homepage": "https://branchbrief.rogerchappel.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogerchappel/branchbrief.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rogerchappel/branchbrief/issues"
+  },
+  "keywords": [
+    "git",
+    "cli",
+    "code-review",
+    "pull-request",
+    "github-actions",
+    "ai-review"
+  ],
   "bin": {
-    "branchbrief": "./dist/cli.js"
+    "branchbrief": "dist/cli.js"
   },
   "exports": {
     ".": "./dist/index.js"
@@ -13,13 +29,17 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --outDir dist src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --outDir dist src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts",
     "dev:docs": "astro dev",
     "build:docs": "astro build",
     "preview:docs": "astro preview",
     "typecheck": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --noEmit src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts tests/**/*.ts",
     "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs tests/git/*.test.ts tests/output/*.test.ts tests/verification/*.test.ts tests/integration/*.test.mjs",
-    "test:cli": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs"
+    "test:cli": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs",
+    "pack:dry-run": "npm run build && npm pack --dry-run",
+    "release:check": "npm test && npm run typecheck && npm run build:docs && git diff --check && npm run pack:dry-run",
+    "prepublishOnly": "npm test && npm run typecheck && npm run build && git diff --check"
   },
   "devDependencies": {
     "@astrojs/starlight": "0.29.0",
@@ -31,5 +51,8 @@
   "engines": {
     "node": ">=22"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
