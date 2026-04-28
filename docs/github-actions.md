@@ -41,7 +41,7 @@ jobs:
 
       - name: Generate branch brief
         run: |
-          node dist/cli.js --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
+          node dist/cli.js --base "origin/${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
 
       - name: Add branch brief to job summary
         run: |
@@ -74,7 +74,7 @@ When running in GitHub Actions, `branchbrief` can use these environment variable
 - `GITHUB_REPOSITORY` provides the `owner/repo` identifier.
 - `GITHUB_STEP_SUMMARY` points to the Markdown job summary file.
 
-Base branch detection should still prefer an explicit `--base` value. In Actions, `${{ github.base_ref }}` is the clearest value for pull request workflows.
+Base branch detection should still prefer an explicit `--base` value. In Actions, `origin/${{ github.base_ref }}` is the clearest value for pull request workflows because checkout fetches remote-tracking refs rather than creating a local base branch.
 
 ## Job Summary Output
 
@@ -105,7 +105,7 @@ Use `--fail-on` when the workflow should fail for branches at or above a risk th
 ```yaml
 - name: Generate branch brief with risk gate
   run: |
-    node dist/cli.js --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot --fail-on high
+    node dist/cli.js --base "origin/${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot --fail-on high
 ```
 
 Risk order is:

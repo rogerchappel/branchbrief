@@ -190,7 +190,7 @@ jobs:
 
       - name: Generate branch brief
         run: |
-          node dist/cli.js --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
+          node dist/cli.js --base "origin/${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
 
       - name: Add branch brief to job summary
         run: |
