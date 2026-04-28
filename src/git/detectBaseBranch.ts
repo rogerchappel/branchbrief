@@ -45,6 +45,14 @@ export const detectBaseBranch = async ({
   env,
   runGit,
 }: DetectBaseBranchOptions): Promise<string> => {
+  if (explicitBase) {
+    if (await refExists(explicitBase, cwd, runGit)) {
+      return explicitBase;
+    }
+
+    throw new BaseBranchNotFoundError([explicitBase]);
+  }
+
   const effectiveEnv =
     env ??
     (globalThis as unknown as { process?: { env?: Record<string, string | undefined> } })
@@ -52,7 +60,6 @@ export const detectBaseBranch = async ({
     {};
   const githubBase = effectiveEnv.GITHUB_BASE_REF;
   const candidates = unique([
-    explicitBase,
     githubBase && `origin/${githubBase}`,
     githubBase,
     "origin/main",

@@ -22,6 +22,7 @@ execFileSync(
     "--moduleResolution",
     "NodeNext",
     "--strict",
+    "--rewriteRelativeImportExtensions",
     "--outDir",
     outDir,
     "src/risk/index.ts",
@@ -30,7 +31,7 @@ execFileSync(
 );
 
 const { classifyRisk } = await import(
-  pathToFileURL(join(outDir, "index.js")).href
+  pathToFileURL(join(outDir, "risk", "index.js")).href
 );
 
 after(async () => {

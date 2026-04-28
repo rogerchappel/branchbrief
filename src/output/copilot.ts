@@ -1,4 +1,4 @@
-import type { BranchBriefInput, CopilotReviewContext } from "./types.ts";
+import type { BranchBriefInput, CopilotReviewContext } from "../types.ts";
 
 export function createCopilotReviewContext(
   input: BranchBriefInput,

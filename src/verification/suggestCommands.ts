@@ -1,8 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { detectPackageManager, type PackageManager } from "./detectPackageManager";
-import { detectProjectType } from "./detectProjectType";
-import { readPackageScripts } from "./readPackageScripts";
+import { detectPackageManager, type PackageManager } from "./detectPackageManager.ts";
+import { detectProjectType } from "./detectProjectType.ts";
+import { readPackageScripts } from "./readPackageScripts.ts";
 
 export interface VerificationSuggestions {
   provided: false;

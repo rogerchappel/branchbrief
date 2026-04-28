@@ -122,6 +122,11 @@ export async function runCli(
       }
     }
 
+    if (result.failedRiskGate) {
+      io.stderr.write(`branchbrief: ${result.failedRiskGate.message}\n`);
+      return 3;
+    }
+
     return 0;
   } catch (error) {
     const branchBriefError = toBranchBriefError(error);

@@ -51,6 +51,13 @@ export interface VerificationSuggestions {
 
 export type OutputFormat = "markdown" | "json";
 
+export interface CopilotReviewContext {
+  focus: string[];
+  riskSignals: string[];
+  verificationGaps: string[];
+  rollbackConcerns: string[];
+}
+
 export interface BranchBriefOptions {
   base?: string;
   output?: string;
@@ -64,10 +71,31 @@ export interface BranchBriefOptions {
 }
 
 export interface BranchBriefInput {
-  facts: BranchFacts;
-  risk?: RiskResult;
-  verification?: VerificationSuggestions;
-  options: BranchBriefOptions;
+  repo: BranchFacts["repo"];
+  branch: BranchFacts["branch"];
+  status: BranchFacts["status"];
+  commits: BranchFacts["commits"];
+  filesChanged: BranchFacts["filesChanged"];
+  diffStat: BranchFacts["diffStat"];
+  risk: RiskResult;
+  verification: VerificationSuggestions;
+  options?: {
+    copilot?: boolean;
+    generatedAt?: string;
+  };
+}
+
+export interface BranchBriefJson {
+  repo: BranchBriefInput["repo"];
+  branch: BranchBriefInput["branch"];
+  status: BranchBriefInput["status"];
+  commits: BranchBriefInput["commits"];
+  filesChanged: BranchBriefInput["filesChanged"];
+  diffStat: BranchBriefInput["diffStat"];
+  risk: BranchBriefInput["risk"];
+  verification: BranchBriefInput["verification"];
+  generatedAt?: string;
+  copilotReviewContext?: CopilotReviewContext;
 }
 
 export interface BranchBriefResult {
@@ -75,6 +103,11 @@ export interface BranchBriefResult {
   format: OutputFormat;
   output?: string;
   risk?: RiskResult;
+  failedRiskGate?: {
+    threshold: RiskLevel;
+    level: RiskLevel;
+    message: string;
+  };
 }
 
 export interface BranchBriefAdapters {
