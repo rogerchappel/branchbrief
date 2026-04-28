@@ -31,8 +31,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --outDir dist src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts",
+    "clean:docs": "rm -rf docs-dist",
     "dev:docs": "astro dev",
-    "build:docs": "astro build",
+    "build:docs": "npm run clean:docs && astro build",
     "preview:docs": "astro preview",
     "typecheck": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --noEmit src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts tests/**/*.ts",
     "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs tests/git/*.test.ts tests/output/*.test.ts tests/verification/*.test.ts tests/integration/*.test.mjs",

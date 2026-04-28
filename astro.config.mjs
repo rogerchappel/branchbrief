@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   output: 'static',
+  outDir: './docs-dist',
   integrations: [
     starlight({
       title: 'branchbrief',
