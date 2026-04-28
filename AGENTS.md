@@ -163,6 +163,21 @@ Bad PRs:
 
 Do not merge without explicit human approval.
 
+## Dependabot Policy
+
+Dependabot is allowed for dependency hygiene, but PR noise must be controlled.
+
+Rules:
+
+- Use grouped dependency updates.
+- Use weekly schedules by default.
+- Keep open PR limits low.
+- Do not auto-merge major updates.
+- Do not auto-merge production dependency updates without tests.
+- Use branchbrief on Dependabot PRs before merge.
+- Treat major updates as medium or high risk.
+- Treat auth, payment, crypto, database, build, and deployment dependency updates as high risk.
+
 ## Stop Before Touching
 
 Ask before changing:

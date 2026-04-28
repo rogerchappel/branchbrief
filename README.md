@@ -39,6 +39,7 @@ See:
 - [JSON example](examples/branch-brief.example.json)
 - [Product requirements](docs/PRD.md)
 - [GitHub Actions guide](docs/github-actions.md)
+- [Dependency policy](docs/dependency-policy.md)
 - [Release guide](docs/release.md)
 
 ## Requirements
