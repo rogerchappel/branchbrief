@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+set -eu
+
+version="${1:-}"
+
+echo "Preparing release-cycle context. This script does not edit files, publish, tag, push, or modify remote state."
+
+if [ -z "$version" ]; then
+  version="$(node -p "require('./package.json').version")"
+fi
+
+echo "Target version: $version"
+echo ""
+echo "Release-start checklist:"
+echo "- Confirm this branch starts from latest main."
+echo "- Confirm CHANGELOG.md has notes for $version."
+echo "- Confirm ROADMAP.md matches the release milestone."
+echo "- Run npm run release:check."
+echo "- Use docs/release-checklist.md for maintainer sign-off."
+echo ""
+echo "Do not publish, tag, or push without explicit maintainer approval."

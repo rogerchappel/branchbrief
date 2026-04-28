@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -eu
+
+echo "Running safe release checks. This script does not publish, tag, push, or modify remote state."
+
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "Working tree has uncommitted changes. Release checks can run, but review the diff before publishing." >&2
+fi
+
+npm test
+npm run typecheck
+npm run build:docs
+git diff --check
+npm run pack:dry-run
+
+echo "Release checks completed. Publishing, tagging, and pushing still require explicit maintainer approval."

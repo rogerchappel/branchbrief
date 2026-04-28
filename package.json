@@ -39,7 +39,8 @@
     "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs tests/git/*.test.ts tests/output/*.test.ts tests/verification/*.test.ts tests/integration/*.test.mjs",
     "test:cli": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs",
     "pack:dry-run": "npm run build && npm pack --dry-run",
-    "release:check": "npm test && npm run typecheck && npm run build:docs && git diff --check && npm run pack:dry-run",
+    "release:check": "scripts/release-check",
+    "release:start": "scripts/release-start",
     "prepublishOnly": "npm test && npm run typecheck && npm run build && git diff --check"
   },
   "devDependencies": {
