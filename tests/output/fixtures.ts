@@ -1,4 +1,4 @@
-import type { BranchBriefInput } from "../../src/output/types.ts";
+import type { BranchBriefInput } from "../../src/types.ts";
 
 export const sampleBranchBriefInput: BranchBriefInput = {
   repo: {
@@ -43,6 +43,7 @@ export const sampleBranchBriefInput: BranchBriefInput = {
     notes: ["Output-only changes", "No git or filesystem access"],
     signals: [
       {
+        id: "path.low",
         level: "low",
         path: "src/output/markdown.ts",
         reason: "pure renderer changed",
@@ -52,6 +53,7 @@ export const sampleBranchBriefInput: BranchBriefInput = {
   verification: {
     provided: false,
     suggestedCommands: ["node --test tests/output/*.test.ts", "git diff --check"],
+    notes: [],
   },
   options: {
     generatedAt: "2026-04-28T00:00:00.000Z",

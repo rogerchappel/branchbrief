@@ -1,5 +1,5 @@
 import { renderCopilotReviewContext } from "./copilot.ts";
-import type { BranchBriefInput } from "./types.ts";
+import type { BranchBriefInput } from "../types.ts";
 
 export function renderMarkdownBranchBrief(input: BranchBriefInput): string {
   const lines = [

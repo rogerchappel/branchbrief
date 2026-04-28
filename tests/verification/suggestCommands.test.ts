@@ -3,9 +3,9 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { strict as assert } from "node:assert";
-import { detectPackageManager } from "../../src/verification/detectPackageManager";
-import { readPackageScripts } from "../../src/verification/readPackageScripts";
-import { suggestVerificationCommands } from "../../src/verification/suggestCommands";
+import { detectPackageManager } from "../../src/verification/detectPackageManager.ts";
+import { readPackageScripts } from "../../src/verification/readPackageScripts.ts";
+import { suggestVerificationCommands } from "../../src/verification/suggestCommands.ts";
 
 function fixturePath(name: string): string {
   return join("tests", "fixtures", "verification", name);

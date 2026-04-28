@@ -12,21 +12,9 @@ import {
   highestRisk,
   type PathRiskResult,
 } from "./pathRisk";
+import type { RiskLevel, RiskResult } from "../types.ts";
 
-export type RiskLevel = "low" | "medium" | "high";
-
-export interface RiskSignal {
-  id: string;
-  level: RiskLevel;
-  path?: string;
-  reason: string;
-}
-
-export interface RiskResult {
-  level: RiskLevel;
-  notes: string[];
-  signals: RiskSignal[];
-}
+export type { RiskLevel, RiskResult, RiskSignal } from "../types.ts";
 
 export interface RiskInput {
   changedFiles: string[];

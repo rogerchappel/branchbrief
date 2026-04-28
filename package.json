@@ -13,8 +13,9 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --outDir dist src/cli.ts src/index.ts src/types.ts src/config/defaults.ts src/errors/BranchBriefError.ts",
-    "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs",
+    "build": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --outDir dist src/*.ts src/**/*.ts",
+    "typecheck": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --noEmit src/*.ts src/**/*.ts tests/**/*.ts",
+    "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs tests/git/*.test.ts tests/output/*.test.ts tests/verification/*.test.ts tests/integration/*.test.mjs",
     "test:cli": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs"
   },
   "devDependencies": {

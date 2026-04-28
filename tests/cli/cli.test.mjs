@@ -32,6 +32,7 @@ before(async () => {
       "--strict",
       "--types",
       "node",
+      "--rewriteRelativeImportExtensions",
       "--outDir",
       outDir,
       "src/cli.ts",
@@ -141,17 +142,16 @@ test("invalid --fail-on value shows a clear error", async () => {
   assert.match(io.stderr.value, /Received: critical/);
 });
 
-test("generation fails gracefully until integrations are wired", async () => {
+test("generation fails gracefully outside a git repository", async () => {
+  const nonRepo = join(outDir, "not-a-repo");
+  await mkdir(nonRepo, { recursive: true });
+
   const io = captureIo();
-  const exitCode = await cli.runCli([], io);
+  const exitCode = await cli.runCli(["--repo-root", nonRepo], io);
 
   assert.equal(exitCode, 2);
-  assert.match(
-    io.stderr.value,
-    /branchbrief integration modules are not wired yet/,
-  );
-  assert.match(io.stderr.value, /git facts collection/);
-  assert.match(io.stderr.value, /output rendering/);
+  assert.match(io.stderr.value, /Not inside a git repository/);
+  assert.match(io.stderr.value, /--repo-root <path>/);
 });
 
 function captureIo() {

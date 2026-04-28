@@ -1,5 +1,5 @@
 import { createCopilotReviewContext } from "./copilot.ts";
-import type { BranchBriefInput, BranchBriefJson } from "./types.ts";
+import type { BranchBriefInput, BranchBriefJson } from "../types.ts";
 
 export function toBranchBriefJson(input: BranchBriefInput): BranchBriefJson {
   const output: BranchBriefJson = {
