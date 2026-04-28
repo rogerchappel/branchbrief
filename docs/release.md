@@ -50,7 +50,7 @@ Review the package contents:
 npm run pack:dry-run
 ```
 
-The dry-run script rebuilds the CLI before packing. This matters because the documentation site and CLI both use `dist/` as an output directory in different workflows.
+The dry-run script rebuilds the CLI before packing. The CLI build writes to `dist/`; the documentation site writes to `docs-dist/`.
 
 Confirm the tarball includes the CLI build and package metadata:
 
