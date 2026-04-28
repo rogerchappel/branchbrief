@@ -34,6 +34,7 @@ Generated briefs are designed to answer the questions reviewers usually ask firs
 
 See:
 
+- [Documentation site](https://branchbrief.rogerchappel.com)
 - [Markdown example](examples/BRANCH_BRIEF.example.md)
 - [JSON example](examples/branch-brief.example.json)
 - [Product requirements](docs/PRD.md)
