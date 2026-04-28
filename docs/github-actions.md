@@ -2,6 +2,8 @@
 
 `branchbrief` is designed to run in GitHub Actions without write access, API keys, LLM calls, or hidden credential use. The default workflow generates a Markdown branch brief, adds it to the job summary, and uploads it as an artifact.
 
+This repository dogfoods that workflow in `.github/workflows/branchbrief.yml`. Pull requests build the local checkout, run `node dist/cli.js`, publish `BRANCH_BRIEF.md` to the job summary, and upload the same file as an artifact. The workflow intentionally does not post pull request comments in V1.
+
 ## Default Read-Only Workflow
 
 Use this workflow for pull requests when you want review context without changing the pull request.
@@ -29,10 +31,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build local CLI
+        run: npm run build
 
       - name: Generate branch brief
         run: |
-          npx branchbrief --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
+          node dist/cli.js --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot
 
       - name: Add branch brief to job summary
         run: |
@@ -50,6 +59,7 @@ The workflow uses:
 - `contents: read` so checkout can read repository contents.
 - `pull-requests: read` so pull request metadata is available to the workflow context.
 - `fetch-depth: 0` so `branchbrief` can compare against the base branch.
+- `npm ci` and `npm run build` so the workflow uses the local checkout instead of assuming the package is already published to npm.
 - `$GITHUB_STEP_SUMMARY` so the generated brief appears on the Actions run summary.
 - `actions/upload-artifact` so reviewers can download `BRANCH_BRIEF.md`.
 
@@ -95,7 +105,7 @@ Use `--fail-on` when the workflow should fail for branches at or above a risk th
 ```yaml
 - name: Generate branch brief with risk gate
   run: |
-    npx branchbrief --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot --fail-on high
+    node dist/cli.js --base "${{ github.base_ref }}" --output BRANCH_BRIEF.md --copilot --fail-on high
 ```
 
 Risk order is:
@@ -111,4 +121,3 @@ Keep the summary and artifact steps after the risk-gated command with `if: alway
 ## PR Comment Mode
 
 Posting or updating pull request comments should be treated as future V2 behavior. It requires write permissions such as `pull-requests: write`, creates visible GitHub side effects, and should be enabled only by an explicit command or flag. The default workflow intentionally does not comment on pull requests.
-
