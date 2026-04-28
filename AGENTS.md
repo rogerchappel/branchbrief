@@ -85,14 +85,14 @@ Before editing, report:
 
 Then:
 
-1. branch from latest `main`
+1. branch from latest default branch
 2. make the smallest coherent change
 3. review `git status`
 4. review `git diff`
 5. stage only intended files
 6. run the smallest relevant verification
 7. commit atomically
-8. rebase before PR
+8. rebase on latest default branch before PR
 9. open a focused PR
 10. return a review pack
 
@@ -102,7 +102,13 @@ Use Conventional Commits.
 
 One commit equals one reviewable intent.
 
-File count is not the commit boundary.
+No commit may change more than 3 files unless a maintainer explicitly approves before the commit.
+
+If a task touches more than 3 files, split the work before committing.
+
+Do not spread many file changes across a few broad commits.
+
+Scaffold, generated output, lockfile-only changes, and mechanical renames are still over-3-file exceptions only with explicit maintainer approval.
 
 Split commits when the work introduces independently reviewable parts, such as:
 
@@ -115,6 +121,8 @@ Split commits when the work introduces independently reviewable parts, such as:
 - CI/config changes
 
 Keep them together only when splitting would create artificial commits that cannot be understood or verified independently.
+
+Tests are separate reviewable intents. Use one test intent per commit, and separate unrelated unit, regression, fixture, and smoke tests into separate commits.
 
 Allowed commit types:
 
@@ -143,6 +151,16 @@ Prefer 1 clean commit over 5 artificial commits.
 
 ## PR Policy
 
+Rebase on latest `main` or the repository default branch before opening a PR.
+
+One PR equals one reviewable intent.
+
+Every delegated agent or workstream owns one branch and submits one PR. This is a hard line.
+
+Do not put several agents' work on one shared branch unless explicitly requested.
+
+Final integration PRs contain only integration glue, conflict resolution, connecting docs, and end-to-end verification updates.
+
 Good PRs:
 
 - can be reviewed in under 15 minutes
@@ -162,6 +180,16 @@ Bad PRs:
 - risky workflow changes without approval
 
 Do not merge without explicit human approval.
+
+### Stacked PRs
+
+For stacked PRs:
+
+- base each PR on the previous PR head
+- keep each head branch limited to that workstream's commits
+- do not merge lower stack branches into higher stack branches
+- prefer rebase or cherry-pick to move commits through the stack
+- never force-push shared or maintainer branches without approval
 
 ## Dependabot Policy
 
