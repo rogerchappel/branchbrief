@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+  site: 'https://branchbrief.rogerchappel.com',
   output: 'static',
   outDir: './docs-dist',
   integrations: [
@@ -13,9 +14,13 @@ export default defineConfig({
         alt: 'branchbrief',
       },
       favicon: '/favicon.svg',
-      social: {
-        github: 'https://github.com/rogerchappel/branchbrief',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/rogerchappel/branchbrief',
+        },
+      ],
       components: {
         Footer: './src/components/Footer.astro',
       },
