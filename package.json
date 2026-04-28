@@ -1,0 +1,28 @@
+{
+  "name": "branchbrief",
+  "version": "0.1.0",
+  "description": "Local-first CLI for generating reviewable branch briefs.",
+  "bin": {
+    "branchbrief": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --outDir dist src/cli.ts src/index.ts src/types.ts src/config/defaults.ts src/errors/BranchBriefError.ts",
+    "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs",
+    "test:cli": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
