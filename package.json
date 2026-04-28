@@ -13,14 +13,20 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --outDir dist src/*.ts src/**/*.ts",
-    "typecheck": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --noEmit src/*.ts src/**/*.ts tests/**/*.ts",
+    "build": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --outDir dist src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts",
+    "dev:docs": "astro dev",
+    "build:docs": "astro build",
+    "preview:docs": "astro preview",
+    "typecheck": "tsc --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --types node --rewriteRelativeImportExtensions --noEmit src/cli.ts src/index.ts src/types.ts src/config/*.ts src/errors/*.ts src/git/*.ts src/output/*.ts src/risk/*.ts src/verification/*.ts tests/**/*.ts",
     "test": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs tests/github/*.test.mjs tests/risk/*.test.mjs tests/git/*.test.ts tests/output/*.test.ts tests/verification/*.test.ts tests/integration/*.test.mjs",
     "test:cli": "node --test tests/cli/*.test.mjs tests/config/*.test.mjs"
   },
   "devDependencies": {
+    "@astrojs/starlight": "0.29.0",
     "@types/node": "^22.15.3",
-    "typescript": "^5.8.3"
+    "astro": "4.16.19",
+    "typescript": "^5.8.3",
+    "zod": "3.25.76"
   },
   "engines": {
     "node": ">=22"

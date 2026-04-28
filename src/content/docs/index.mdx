@@ -1,0 +1,35 @@
+---
+title: branchbrief
+description: Local-first branch review briefs for humans and AI reviewers.
+template: splash
+hero:
+  title: Local-first branch review briefs for humans and AI reviewers.
+  tagline: "branchbrief turns any git branch into a reviewable, auditable brief: commits, changed files, diff stats, risk signals, verification gaps, and Copilot-ready review context. Local-first by default. LLM-enhanced by choice."
+  image:
+    file: ../../assets/branchbrief-icon.svg
+    alt: branchbrief icon
+  actions:
+    - text: Get started
+      link: /getting-started/
+      icon: right-arrow
+    - text: CLI reference
+      link: /reference/cli/
+      variant: secondary
+      icon: document
+---
+
+## Review Context That Stays Auditable
+
+`branchbrief` is a planned local-first CLI and GitHub Action for turning branch state into a structured handoff artifact. It starts with deterministic git facts before any optional AI enhancement.
+
+## What It Captures
+
+- Commits since the base branch.
+- Changed files and diff stats.
+- Risk signals from auditable path and size rules.
+- Verification gaps and suggested commands.
+- Copilot-ready review context when explicitly requested.
+
+## Deployment
+
+This documentation site is built with Astro and Starlight. Cloudflare Pages should use `npm run build:docs` as the build command and `dist` as the output directory.
