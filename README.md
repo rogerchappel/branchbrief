@@ -14,9 +14,9 @@ The default workflow is intentionally deterministic:
 
 ## Status
 
-`branchbrief` is early open-source software. The local CLI, Markdown output, JSON output, deterministic risk notes, verification suggestions, examples, tests, and GitHub Actions usage docs are present.
+`branchbrief` is early open-source software. The local CLI, Markdown output, JSON output, deterministic risk notes, verification suggestions, examples, tests, GitHub Actions usage docs, and npm release guidance are present.
 
-Before a public release, add a top-level `LICENSE` file that matches the `MIT` package metadata and decide whether to add community files such as `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md`.
+The package is prepared for public npm publishing, but maintainers must run the release checklist and publish manually. `npx branchbrief` works after the `branchbrief` package is published to npm.
 
 ## What It Generates
 
@@ -39,6 +39,7 @@ See:
 - [JSON example](examples/branch-brief.example.json)
 - [Product requirements](docs/PRD.md)
 - [GitHub Actions guide](docs/github-actions.md)
+- [Release guide](docs/release.md)
 
 ## Requirements
 
@@ -70,11 +71,13 @@ npm link
 branchbrief --help
 ```
 
-After the package is published, expected usage is:
+After the package is published to npm, expected usage is:
 
 ```bash
 npx branchbrief --help
 ```
+
+`npx` resolves packages from npm. It does not deploy the package itself.
 
 ## Quickstart
 
@@ -246,6 +249,18 @@ Run the minimal whitespace check:
 git diff --check
 ```
 
+Run the full release readiness check:
+
+```bash
+npm run release:check
+```
+
+Inspect the npm package contents without publishing:
+
+```bash
+npm run pack:dry-run
+```
+
 ## Project Layout
 
 ```text
@@ -299,13 +314,25 @@ Current repository strengths:
 
 Recommended before announcing a public release:
 
-- Add a top-level `LICENSE` file that matches `package.json`.
-- Add `CONTRIBUTING.md` with the contribution workflow.
-- Add `SECURITY.md` with vulnerability reporting guidance.
-- Add `CODE_OF_CONDUCT.md` if the project expects community discussion.
+- Confirm `npm run release:check` passes from a clean checkout.
+- Confirm `npm run pack:dry-run` includes the intended package files.
+- Confirm `npm audit --audit-level=moderate` has no release-blocking findings, or document accepted risk.
 - Decide whether PR comments, labels, or GitHub write actions belong in V1 or later.
-- Publish a release checklist for npm publishing and docs deployment.
+- Publish from latest `main`, not from a feature branch.
+- Create a GitHub release for the published npm version.
+
+## Releases
+
+`branchbrief` uses npm package versions and GitHub releases.
+
+While the project is pre-1.0:
+
+- use patch versions for fixes and release hygiene
+- use minor versions for new CLI capabilities or output additions
+- reserve `1.0.0` for stable CLI flags, default behavior, and output formats
+
+See [docs/release.md](docs/release.md) for the maintainer release flow.
 
 ## License
 
-`package.json` currently declares `MIT`. A top-level `LICENSE` file should be added before public release.
+MIT. See [LICENSE](LICENSE).
