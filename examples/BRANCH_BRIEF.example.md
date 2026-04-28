@@ -3,7 +3,7 @@
 ## Overview
 
 Repo: branchbrief
-Branch: agent/output-renderers
+Branch: agent/self-dogfood
 Base: main
 Generated: 2026-04-28T00:00:00.000Z
 Status: clean, staged 0, unstaged 0, untracked 0
@@ -14,27 +14,28 @@ This branch contains 2 commits affecting 3 files.
 
 ## Commits
 
-- abc123 feat(output): generate markdown branch briefs
-- def456 feat(output): support json branch briefs
+- 60a039365bf3e49f47479ef6b02e597c274012c2 docs(github): document self-dogfood workflow
+- f3b6adf12b21c74ee714efaf2e49fc72a6809556 ci(branchbrief): run branchbrief on pull requests
 
 ## Files Changed
 
-- src/output/markdown.ts
-- src/output/json.ts
-- tests/output/markdown.test.ts
+- .github/workflows/branchbrief.yml
+- README.md
+- docs/github-actions.md
 
 ## Diff Stat
 
-3 files changed, 180 insertions(+)
+3 files changed, 65 insertions(+), 4 deletions(-)
 
 ## Risk Level
 
-low
+medium
 
 ## Risk Notes
 
-- Output-only changes
-- No git or filesystem access
+- Medium-risk path changed: .github/workflows/branchbrief.yml
+- CI workflow changed
+- documentation changed
 
 ## Verification
 
@@ -42,8 +43,9 @@ Not provided.
 
 Suggested commands:
 
-- node --test tests/output/*.test.ts
-- git diff --check
+- npm test
+- npm run typecheck
+- npm run build
 
 ## Rollback Plan
 
@@ -57,7 +59,7 @@ Review the changed files, risk notes, and verification status before merge.
 
 Review this branch with attention to:
 
-- Risk level: low
+- Risk level: medium
 - Sensitive files changed
 - Public API changes
 - Config or CI changes
@@ -67,13 +69,16 @@ Review this branch with attention to:
 
 Risk signals:
 
-- low - src/output/markdown.ts: pure renderer changed
+- medium - .github/workflows/branchbrief.yml: Medium-risk path signal ".github/workflows" matched
+- low - CI workflow changed
+- low - documentation changed
 
 Verification gaps:
 
 - Verification was not provided.
-- Suggested command: node --test tests/output/*.test.ts
-- Suggested command: git diff --check
+- Suggested command: npm test
+- Suggested command: npm run typecheck
+- Suggested command: npm run build
 
 Rollback concerns:
 

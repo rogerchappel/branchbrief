@@ -5,9 +5,9 @@
     "remote": "git@github.com:rogerchappel/branchbrief.git"
   },
   "branch": {
-    "current": "agent/output-renderers",
+    "current": "agent/self-dogfood",
     "base": "main",
-    "mergeBase": "abc123"
+    "mergeBase": "167ca409bc656d6146104349d445d4230f3e3505"
   },
   "status": {
     "dirty": false,
@@ -17,50 +17,64 @@
   },
   "commits": [
     {
-      "sha": "abc123",
-      "subject": "feat(output): generate markdown branch briefs"
+      "sha": "60a039365bf3e49f47479ef6b02e597c274012c2",
+      "subject": "docs(github): document self-dogfood workflow"
     },
     {
-      "sha": "def456",
-      "subject": "feat(output): support json branch briefs"
+      "sha": "f3b6adf12b21c74ee714efaf2e49fc72a6809556",
+      "subject": "ci(branchbrief): run branchbrief on pull requests"
     }
   ],
   "filesChanged": [
-    "src/output/markdown.ts",
-    "src/output/json.ts",
-    "tests/output/markdown.test.ts"
+    ".github/workflows/branchbrief.yml",
+    "README.md",
+    "docs/github-actions.md"
   ],
   "diffStat": {
     "files": 3,
-    "insertions": 180,
-    "deletions": 0,
-    "raw": "3 files changed, 180 insertions(+)"
+    "insertions": 65,
+    "deletions": 4,
+    "raw": "3 files changed, 65 insertions(+), 4 deletions(-)"
   },
   "risk": {
-    "level": "low",
+    "level": "medium",
     "notes": [
-      "Output-only changes",
-      "No git or filesystem access"
+      "Medium-risk path changed: .github/workflows/branchbrief.yml",
+      "CI workflow changed",
+      "documentation changed"
     ],
     "signals": [
       {
+        "id": "path.medium",
+        "level": "medium",
+        "path": ".github/workflows/branchbrief.yml",
+        "reason": "Medium-risk path signal \".github/workflows\" matched"
+      },
+      {
+        "id": "category.ci",
         "level": "low",
-        "path": "src/output/markdown.ts",
-        "reason": "pure renderer changed"
+        "reason": "CI workflow changed"
+      },
+      {
+        "id": "category.docs",
+        "level": "low",
+        "reason": "documentation changed"
       }
     ]
   },
   "verification": {
     "provided": false,
     "suggestedCommands": [
-      "node --test tests/output/*.test.ts",
-      "git diff --check"
-    ]
+      "npm test",
+      "npm run typecheck",
+      "npm run build"
+    ],
+    "notes": []
   },
   "generatedAt": "2026-04-28T00:00:00.000Z",
   "copilotReviewContext": {
     "focus": [
-      "Risk level: low",
+      "Risk level: medium",
       "Sensitive files changed",
       "Public API changes",
       "Config or CI changes",
@@ -69,12 +83,15 @@
       "Rollback concerns"
     ],
     "riskSignals": [
-      "low - src/output/markdown.ts: pure renderer changed"
+      "medium - .github/workflows/branchbrief.yml: Medium-risk path signal \".github/workflows\" matched",
+      "low - CI workflow changed",
+      "low - documentation changed"
     ],
     "verificationGaps": [
       "Verification was not provided.",
-      "Suggested command: node --test tests/output/*.test.ts",
-      "Suggested command: git diff --check"
+      "Suggested command: npm test",
+      "Suggested command: npm run typecheck",
+      "Suggested command: npm run build"
     ],
     "rollbackConcerns": [
       "Confirm the listed commits can be reverted cleanly if issues are found."
