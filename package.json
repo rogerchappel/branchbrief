@@ -43,7 +43,9 @@
     "pack:dry-run": "npm run build && npm pack --dry-run",
     "release:check": "scripts/release-check",
     "release:start": "scripts/release-start",
-    "prepublishOnly": "npm test && npm run typecheck && npm run build && git diff --check"
+    "prepublishOnly": "npm test && npm run typecheck && npm run build && git diff --check",
+    "check": "npm run typecheck",
+    "package:smoke": "npm run build && npm pack --dry-run"
   },
   "devDependencies": {
     "@astrojs/starlight": "^0.38.4",
