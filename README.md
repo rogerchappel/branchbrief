@@ -124,6 +124,21 @@ Risk thresholds are ordered:
 low < medium < high
 ```
 
+For a reproducible local demo that generates both Markdown and JSON from this
+repository, run:
+
+```bash
+npm run build
+bash demo/run-self-review.sh
+```
+
+The demo writes a Copilot-ready `BRANCH_BRIEF.md` and a machine-readable
+`branch-brief.json` to a temporary directory and verifies both files contain the
+expected review sections.
+
+Promotion support drafts live in [docs/promo/video-brief.md](docs/promo/video-brief.md)
+and [docs/promo/social-hooks.md](docs/promo/social-hooks.md).
+
 ## CLI Reference
 
 ```bash
