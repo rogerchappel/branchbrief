@@ -11,6 +11,6 @@ npm test
 npm run typecheck
 npm run build:docs
 git diff --check
-npm run pack:dry-run
+npm run package:smoke
 
 echo "Release checks completed. Publishing, tagging, and pushing still require explicit maintainer approval."
