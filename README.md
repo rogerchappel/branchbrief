@@ -321,6 +321,19 @@ examples/                          Example generated outputs and workflows
 tests/                             Unit and integration tests
 ```
 
+## Release readiness
+
+Before opening a release PR, run the package checks that exercise the build, tests, smoke path, and pack manifest:
+
+```sh
+npm run check
+npm test
+npm run package:smoke
+npm run release:check
+```
+
+The package metadata points at the public GitHub repository so npm and generated provenance link back to the source.
+
 ## Contributing
 
 Contributions should keep the project small, auditable, and local-first.
