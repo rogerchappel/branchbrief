@@ -137,7 +137,8 @@ The demo writes a Copilot-ready `BRANCH_BRIEF.md` and a machine-readable
 expected review sections.
 
 Promotion support drafts live in [docs/promo/video-brief.md](docs/promo/video-brief.md)
-and [docs/promo/social-hooks.md](docs/promo/social-hooks.md).
+and [docs/promo/social-hooks.md](docs/promo/social-hooks.md). A longer launch
+note draft lives in [docs/promo/launch-note.md](docs/promo/launch-note.md).
 
 ## CLI Reference
 
