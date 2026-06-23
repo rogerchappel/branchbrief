@@ -174,6 +174,16 @@ branchbrief --base main --copilot --fail-on high
 branchbrief --repo-root . --base origin/main --no-color
 ```
 
+## Limitations And Safety
+
+- `branchbrief` uses local git history. Fetch the base branch first when CI or
+  reviewers need the newest comparison point.
+- Generated risk notes are deterministic heuristics based on paths, diff size,
+  and repository metadata. They help reviewers triage but do not prove a change
+  is safe.
+- The CLI is read-only unless you pass `--output`; in that case it writes only
+  the requested brief file.
+
 ## GitHub Actions
 
 `branchbrief` can run in GitHub Actions as a read-only workflow. This example writes the brief to the job summary and uploads the exact Markdown artifact.
