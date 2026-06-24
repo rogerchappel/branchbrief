@@ -345,6 +345,10 @@ npm run release:check
 
 The package metadata points at the public GitHub repository so npm and generated provenance link back to the source.
 
+## Safety Boundaries
+
+Generated briefs are review aids, not approval decisions. Read the diff and suggested verification before acting on risk labels, and inspect generated Markdown or JSON for private file paths, branch names, or issue details before sharing it outside the repository.
+
 ## Contributing
 
 Contributions should keep the project small, auditable, and local-first.
