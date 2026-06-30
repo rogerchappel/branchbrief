@@ -140,6 +140,11 @@ Promotion support drafts live in [docs/promo/video-brief.md](docs/promo/video-br
 and [docs/promo/social-hooks.md](docs/promo/social-hooks.md). A longer launch
 note draft lives in [docs/promo/launch-note.md](docs/promo/launch-note.md).
 
+For a step-by-step pre-PR workflow, see
+[docs/tutorials/pre-pr-local-review.md](docs/tutorials/pre-pr-local-review.md).
+A launch-note draft for this demo angle is in
+[docs/promo/launch-note-self-review.md](docs/promo/launch-note-self-review.md).
+
 ## CLI Reference
 
 ```bash
