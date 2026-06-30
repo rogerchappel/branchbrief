@@ -139,6 +139,11 @@ expected review sections.
 Promotion support drafts live in [docs/promo/video-brief.md](docs/promo/video-brief.md)
 and [docs/promo/social-hooks.md](docs/promo/social-hooks.md).
 
+For a step-by-step pre-PR workflow, see
+[docs/tutorials/pre-pr-local-review.md](docs/tutorials/pre-pr-local-review.md).
+A launch-note draft for this demo angle is in
+[docs/promo/launch-note-self-review.md](docs/promo/launch-note-self-review.md).
+
 ## CLI Reference
 
 ```bash
