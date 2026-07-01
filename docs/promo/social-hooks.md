@@ -13,6 +13,8 @@ optional Copilot-readable context.
    BRANCH_BRIEF.md --copilot` and attach the generated brief to the PR.
 3. No tokens, no hosted service, no LLM call. BranchBrief reads local Git state
    and writes deterministic Markdown or JSON for reviewers and automation.
+4. Pre-PR self-review flow: run `bash demo/run-self-review.sh`, open the
+   generated Markdown, then use the JSON artifact as CI or agent context.
 
 ## Demo angle
 
@@ -24,3 +26,5 @@ bash demo/run-self-review.sh
 Show both generated files: `BRANCH_BRIEF.md` for reviewers and
 `branch-brief.json` for workflow automation.
 
+The step-by-step recipe is in `docs/tutorials/pre-pr-local-review.md`, with a
+launch-note draft in `docs/promo/launch-note-self-review.md`.

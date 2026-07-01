@@ -1,7 +1,13 @@
-# Launch Note Draft
+# BranchBrief Launch Note Draft
 
-BranchBrief helps maintainers turn local Git history into a review packet
-before a pull request is opened or while review is in progress.
+BranchBrief is a local-first CLI for turning a Git branch into a structured
+review brief before a pull request is opened or reviewed.
+
+It reads local Git state and writes deterministic Markdown or JSON with branch
+and base details, commits, changed files, diff stats, risk notes, suggested
+verification, rollback notes, and a human decision prompt. The optional
+`--copilot` flag adds review context without calling an LLM or posting comments
+to GitHub.
 
 ## What is ready
 
@@ -29,8 +35,18 @@ base details, commits, changed files, diff stats, risk notes, suggested
 verification, rollback notes, and optional Copilot-readable context. It works
 without API keys, hosted services, or LLM calls.
 
+## Useful angles
+
+- For maintainers: attach a generated brief to a PR so reviewers see the shape of
+  the change first.
+- For CI: run with `--fail-on high` when a branch should stop on deterministic
+  risk signals.
+- For AI-assisted review: include `--copilot` to keep the review context explicit
+  and inspectable.
+
 ## Boundaries
 
-BranchBrief needs local Git history and a reachable base ref. It does not
-replace human review, run the suggested verification commands, or publish npm
-packages automatically.
+- BranchBrief needs local Git history that includes the requested base ref.
+- Suggested verification commands are hints, not proof that checks were run.
+- Human review is still required for merge decisions.
+- It does not publish npm packages automatically.

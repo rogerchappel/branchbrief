@@ -137,8 +137,12 @@ The demo writes a Copilot-ready `BRANCH_BRIEF.md` and a machine-readable
 expected review sections.
 
 Promotion support drafts live in [docs/promo/video-brief.md](docs/promo/video-brief.md)
-[docs/promo/social-hooks.md](docs/promo/social-hooks.md), and
-[docs/promo/launch-note.md](docs/promo/launch-note.md).
+and [docs/promo/social-hooks.md](docs/promo/social-hooks.md). Launch-note drafts
+live in [docs/promo/launch-note.md](docs/promo/launch-note.md) and
+[docs/promo/launch-note-self-review.md](docs/promo/launch-note-self-review.md).
+
+For a step-by-step pre-PR workflow, see
+[docs/tutorials/pre-pr-local-review.md](docs/tutorials/pre-pr-local-review.md).
 
 ## CLI Reference
 
@@ -173,6 +177,16 @@ branchbrief --base main --json --output branch-brief.json
 branchbrief --base main --copilot --fail-on high
 branchbrief --repo-root . --base origin/main --no-color
 ```
+
+## Limitations And Safety
+
+- `branchbrief` uses local git history. Fetch the base branch first when CI or
+  reviewers need the newest comparison point.
+- Generated risk notes are deterministic heuristics based on paths, diff size,
+  and repository metadata. They help reviewers triage but do not prove a change
+  is safe.
+- The CLI is read-only unless you pass `--output`; in that case it writes only
+  the requested brief file.
 
 ## GitHub Actions
 
@@ -321,6 +335,23 @@ docs/                              Project and GitHub Actions docs
 examples/                          Example generated outputs and workflows
 tests/                             Unit and integration tests
 ```
+
+## Release readiness
+
+Before opening a release PR, run the package checks that exercise the build, tests, smoke path, and pack manifest:
+
+```sh
+npm run check
+npm test
+npm run package:smoke
+npm run release:check
+```
+
+The package metadata points at the public GitHub repository so npm and generated provenance link back to the source.
+
+## Safety Boundaries
+
+Generated briefs are review aids, not approval decisions. Read the diff and suggested verification before acting on risk labels, and inspect generated Markdown or JSON for private file paths, branch names, or issue details before sharing it outside the repository.
 
 ## Contributing
 
